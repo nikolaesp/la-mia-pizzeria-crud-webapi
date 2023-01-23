@@ -1,0 +1,27 @@
+﻿@model Pizza
+
+<div class="container">
+    <form asp-controller="Post" asp-action="Update" method="post">
+        @Html.AntiForgeryToken()
+        <div class="mb-3">
+            <label>Id:</label>
+            <input asp-for="Id" type="text" class="form-control" disabled />
+        </div>
+        <div class="mb-3">
+            <label>Titolo:</label>
+            <input asp-for="Title" type="text" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Descrizione:</label>
+            <textarea asp-for="Description" rows="10" class="d-block w-100"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3 form-check">
+            <label>Path Immagine:</label>
+            <input asp-for="Image" type="text" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Salva Modifiche al Pizza</button>
+    </form>
+</div>
