@@ -13,10 +13,15 @@
 
             const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
                
-            axios.get(`localhost:7201/api/pizzas${id}`).then((res) =>
+            axios.get(`/api/pizzas/${id}`).then((res) =>
                     {
                 let pizza = res.data;
                 console.log('pizza ricevuta', pizza);
+            let ingridienti = "";
+            pizza.ingridients.forEach(ingridient => {
+                ingridienti += `<p>${ingridient.name}</p>`;
+                
+            });
 
 
                 document.getElementById('pizza_container').innerHTML +=
@@ -27,6 +32,11 @@
                                     <div class="card-body">
                                     <h5 class="card-title">${pizza.title}</h5>
                                             <p class="card-text">${pizza.description}</p>
+                                                            <p class="card-text"><strong>Pizza base:</strong></p>
+                                            <p class="card-text">${pizza.category.title}</p>
+                                                                    <p><strong>Ingridienti:</strong></P>
+                                                            ${ingridienti}
+                                                    <h5>prezzo: ${pizza.price}&euro;</h5>
                                     </div>
                             </div>
                         </div>
