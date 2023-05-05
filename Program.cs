@@ -1,4 +1,14 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using LaMiaPizzeria.Data;
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("LaMiaPizzeriaContextConnection") ?? throw new InvalidOperationException("Connection string 'LaMiaPizzeriaContextConnection' not found.");
+
+builder.Services.AddDbContext<LaMiaPizzeriaContext>(options =>
+    options.UseSqlServer(connectionString));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<LaMiaPizzeriaContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -17,7 +27,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
+app.MapRazorPages();
 app.UseAuthorization();
 
 app.MapControllerRoute(

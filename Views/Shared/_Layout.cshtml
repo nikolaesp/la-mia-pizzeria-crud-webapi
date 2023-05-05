@@ -8,7 +8,7 @@
 
 </head>
 <body background="https://img.freepik.com/premium-vector/pizza-ingredients-simple-seamless-pattern-white-gray-color-background-with-salami-cheese-mushroom-olive-basil-tomato-paprika-web-page-fill-wrapping-paper-backdrop_167184-459.jpg?w=996">
-    <nav class="navbar  bg-transparent">
+    <nav class="navbar container-fluid  bg-transparent">
         <form class="container-fluid justify-content-start">
             <a asp-area="" asp-controller="Pizza" asp-action="Index">
                 <input type="button" class="btn btn-outline-success me-2" value="Index" />
@@ -16,8 +16,11 @@
             <a asp-area="" asp-controller="Pizza" asp-action="Create">
                 <input type="button" class="btn btn-outline-success me-2" value="Create" />
             </a>
+             <partial name="_LoginPartial" />
         </form>
-    </nav>
+       
+           
+        </nav>
    
     <div class="container">
         <main role="main" class="pb-3">
