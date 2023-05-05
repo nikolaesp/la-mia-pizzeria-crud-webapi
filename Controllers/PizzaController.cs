@@ -44,6 +44,7 @@ namespace LaMiaPizzeria.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            
             using (PizzaContext db = new PizzaContext())
             {
                 List<Category> categoriesFromDb = db.Categories.ToList<Category>();
@@ -55,6 +56,7 @@ namespace LaMiaPizzeria.Controllers
                 modelForView.Ingridients = IngridientsConverter.getListTagsForMultipleSelect();
                 return View("Create", modelForView);
             }
+           
         }
 
 
